@@ -95,23 +95,29 @@ class _QuotePageState extends State<QuotePage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        quotes.isNotEmpty ? quotes.last.q! : 'No Quotes found',
-                        textAlign: TextAlign.justify,
-                        style: const TextStyle(
-                            fontSize: 20,
-                            fontStyle: FontStyle.italic,
-                            color: Colors.black),
+                      Padding(
+                        padding: const  EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                        child: Text(
+                          quotes.isNotEmpty ? quotes.last.q! : 'No Quotes found',
+                          textAlign: TextAlign.justify,
+                          style: const TextStyle(
+                              fontSize: 20,
+                              fontStyle: FontStyle.italic,
+                              color: Colors.black),
+                        ),
                       ),
                       const SizedBox(height: 22),
                       Align(
                           alignment: Alignment.bottomRight,
-                          child: Text(
-                            quotes.isNotEmpty ? quotes.last.a! : 'No author',
-                            textAlign: TextAlign.justify,
-                            style: const TextStyle(
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Text(
+                              quotes.isNotEmpty ? quotes.last.a! : 'No author',
+                              textAlign: TextAlign.justify,
+                              style: const TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           )),
                       SizedBox(
