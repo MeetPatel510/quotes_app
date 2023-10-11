@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:quotes_app/helper/api.dart';
 import 'package:quotes_app/model/quotes_model.dart';
+import 'package:quotes_app/provider/theme_provider.dart';
 import 'package:quotes_app/screen/save.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -22,7 +23,9 @@ class _QuotePageState extends State<QuotePage> {
   late SharedPreferences prefs;
 
   final Connectivity _connectivity = Connectivity();
-  late StreamSubscription< ConnectivityResult > _connectivitySubscription;
+  late StreamSubscription<ConnectivityResult> _connectivitySubscription;
+
+  // final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
 
   @override
   void initState() {
@@ -33,9 +36,7 @@ class _QuotePageState extends State<QuotePage> {
         _connectivity.onConnectivityChanged.listen(_UpdateConnectionState);
 
     // Provider.of<QuotesProvider>(context, listen: false).fetchAllQuotes();
-
   }
-
 
   fetchAllQuotes() async {
     prefs = await SharedPreferences.getInstance();
@@ -45,12 +46,12 @@ class _QuotePageState extends State<QuotePage> {
     setState(() {});
   }
 
-
   @override
   void dispose() {
     _connectivitySubscription.cancel();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -59,9 +60,17 @@ class _QuotePageState extends State<QuotePage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+
         centerTitle: true,
-        title: const Text("Random Quotes"),
+        title: Text("Random Quotes"),
+        actions: [
+          Switch(
+            value: Provider.of<ThemeProvider>(context).themeModel.isDark,
+            onChanged: (val) {
+              Provider.of<ThemeProvider>(context, listen: false).changeTheme();
+            },
+          ),
+        ],
       ),
       body: SafeArea(
         child: ListView(
@@ -116,7 +125,8 @@ class _QuotePageState extends State<QuotePage> {
                               var resp = await APICall.fetchQuote();
                               quotes.add(resp);
 
-                              await prefs.setString('quotes', quoteToMap(quotes));
+                              await prefs.setString(
+                                  'quotes', quoteToMap(quotes));
                               setState(() {});
                             },
                             child: const Text('Fetch New '),
@@ -150,7 +160,8 @@ class _QuotePageState extends State<QuotePage> {
       ),
     );
   }
-  Future< void > initConnectivity() async {
+
+  Future<void> initConnectivity() async {
     late ConnectivityResult result;
     try {
       result = await _connectivity.checkConnectivity();
@@ -176,9 +187,8 @@ class _QuotePageState extends State<QuotePage> {
   void showStatus(ConnectivityResult result, bool status) {
     final snackBar = SnackBar(
         content:
-        Text("${status ? 'ONLINE\n' : 'OFFLINE\n'}${result.toString()} "),
+            Text("${status ? 'ONLINE\n' : 'OFFLINE\n'}${result.toString()} "),
         backgroundColor: status ? Colors.green : Colors.red);
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
-

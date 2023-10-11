@@ -14,26 +14,45 @@ class _IntroPaeState extends State<IntroPae> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          "Random Quotes",
+          style: TextStyle(color: Colors.blue),
+
+        ),
+        backgroundColor: Colors.grey[50],
+        elevation: 0,
+      ),
       body: IntroductionScreen(
         pages: [
           PageViewModel(
             title: " The Random Quotes in App",
-            body: "Give me a good script, and I’ll be a hundred times better as a director",
-            image: CachedNetworkImage( // Use CachedNetworkImage to load and cache the image
-              imageUrl: "https://blogimage.vantagefit.io/vfitimages/2022/08/positiveenergyquotes.b.jpg",
-              placeholder: (context, url) => CircularProgressIndicator(), // Placeholder while the image is loading
-              errorWidget: (context, url, error) => Icon(Icons.error), // Widget to display if there's an error loading the image
+            body:
+                "Give me a good script, and I’ll be a hundred times better as a director",
+            image: CachedNetworkImage(
+              // Use CachedNetworkImage to load and cache the image
+              imageUrl:
+                  "https://blogimage.vantagefit.io/vfitimages/2022/08/positiveenergyquotes.b.jpg",
+              placeholder: (context, url) => CircularProgressIndicator(),
+              // Placeholder while the image is loading
+              errorWidget: (context, url, error) => Icon(Icons.error),
+              // Widget to display if there's an error loading the image
               fit: BoxFit.cover,
             ),
           ),
           PageViewModel(
             title: " The Random Quotes in App",
-            body: "Give me a good script, and I’ll be a hundred times better as a director",
-            image: CachedNetworkImage( // Use CachedNetworkImage to load and cache the image
-              imageUrl: "https://www.invajy.com/wp-content/uploads/2019/12/Short-Quotes-3.jpg",
-              placeholder: (context, url) => CircularProgressIndicator(), // Placeholder while the image is loading
-              errorWidget: (context, url, error) => Icon(Icons.error), // Widget to display if there's an error loading the image
+            body:
+                "Give me a good script, and I’ll be a hundred times better as a director",
+            image: CachedNetworkImage(
+              // Use CachedNetworkImage to load and cache the image
+              imageUrl:
+                  "https://www.invajy.com/wp-content/uploads/2019/12/Short-Quotes-3.jpg",
+              placeholder: (context, url) => CircularProgressIndicator(),
+              // Placeholder while the image is loading
+              errorWidget: (context, url, error) => Icon(Icons.error),
+              // Widget to display if there's an error loading the image
               fit: BoxFit.cover,
             ),
           ),
@@ -50,5 +69,3 @@ class _IntroPaeState extends State<IntroPae> {
     );
   }
 }
-
-
