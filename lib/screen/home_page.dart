@@ -117,6 +117,7 @@ class _QuotePageState extends State<QuotePage> {
                               style: const TextStyle(
                                 fontSize: 17,
                                 fontWeight: FontWeight.bold,
+                                color: Colors.black
                               ),
                             ),
                           )),

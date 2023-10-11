@@ -34,12 +34,14 @@ void main() async{
         },
         debugShowCheckedModeBanner: false,
         title: '',
+
         darkTheme: ThemeData.dark(
-          useMaterial3: true,
+
         ),
         themeMode: (Provider.of<ThemeProvider>(context).themeModel.isDark)
             ? ThemeMode.dark
             : ThemeMode.light,
+
       );
     },
   ));
