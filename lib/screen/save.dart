@@ -17,7 +17,7 @@ class ViewPage extends StatelessWidget {
         itemCount: quotes.length,
         itemBuilder: (context, index) => Container(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          height: _height * 0.25,
+          height: _height * 0.27,
           width: _width / 2,
           child: InkWell(
             onDoubleTap: () {

@@ -42,6 +42,7 @@ dependencies:
   cached_network_image:
   icons_launcher:
   connectivity_plus:
+  share_plus:
 
 
 dev_dependencies:
