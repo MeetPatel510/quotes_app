@@ -1,7 +1,7 @@
 ##  Quotes App
 ##  Project Objectives :
       -API Calling : The app utilizes API calls to fetch weather data from reliable quote data providers. This ensures that users receive quotes by authors.
-      -Shared Preferences : "Sky Scrapper" incorporates Shared Preferences to enhance the user experience. Users can save specific cities or states of interest, and this information is stored locally. The app provides a dedicated page where users can view their saved locations for quick access to weather details.
+      -Shared Preferences : "Quotes App" incorporates Shared Preferences to enhance the user experience. Users can save specific Quotess and Authors, and this information is stored locally. The app provides a dedicated page where users can view their saved locations for quick access to Quotes details.
 
       -Network Connectivity : The app includes network connectivity checks to ensure uninterrupted access to quotes data. In scenarios where network connectivity is unavailable, the app gracefully handles errors and presents an error screen, notifying the user about the network unavailability and suggesting alternative actions.
 
